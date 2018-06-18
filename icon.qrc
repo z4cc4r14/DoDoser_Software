@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/ico">
+        <file>dosing_icon.jpg</file>
+    </qresource>
+    <qresource prefix="/QML">
+        <file>TankLeveler.qml</file>
+        <file>main.qml</file>
+    </qresource>
+</RCC>

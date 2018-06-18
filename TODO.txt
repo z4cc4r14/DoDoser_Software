@@ -1,0 +1,22 @@
+BUG LIST:
+*Nella visualizzazione dei riassunti dei dosaggi settimanali e giornalieri uso la funzione sql total, che però converte il
+dato da float a int, perdendo la parte decimale, questo invalida l'informazione
+*Nella modifica dei dati inerenti le linee si innesca spesso una condizione per la quale le modifice riportate "vanno e vengono"
+*Verificare perchè dopo ogni invio di un 3 di configurazione mi tronano una spratata di 3 di stato impianto.
+*Non tornano i conti per quanto riguarda la quantità nella configurazione oraria
+*Le quantità da dosare con la virgola non vanno bene--Bisogna usare il .
+*Le quantità riportate nella configurazione oraria non tornano in quanto il dato è un'int8_t, ora l'ho trasformato in float, ma va
+rifatta tutta la gestione dell'upload della configurazione oraria in micro, in quanto non tornano gli indici
+    *iniziato rifacimento gestione upload configurazione oraria, utilizzato un int16 invece di un float in quanto arduino assegna
+    al float un valore di 16 bit, mentre i software assegna un 32(padding);
+    *non funziona bene il nuovo rifacimento iin quanto pare fa andare in overflow il buffer di supporto su arduino
+-Modificare la regola per l'immissione del quantitativo di liquido, non consente di mettere un numero a 3 cifre float
+-Modificare la gestione dell'avanzamento del dosaggio, ora è il dispositivo che invia al software, invece deve essere il software a chiederla
+-Fare comando di lettura configurazione oraria
+-Aggiungere la possibilità di indicare gli ml da ricaricare al refill
+-Aggiungere il pilotaggio dei magnetic stirrer
+-Gestire un'allarme sonoro che si attivi a scelta quando si esaurisce il liquido
+-Gestire lettura schedulazione oraria
+-Gestire la progress bar in modo che se siamo in procinto di effettuare un dosaggio, ma non ricevo aggiornamenti di stato per l'avanzamento
+la nascondo preventivamente
+-Sotto al 1ml non viene dosato
